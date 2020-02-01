@@ -108,12 +108,12 @@ public class ResourceAspect {
 
   private String resolvePermission(Method method){
     String permission = getPermission(CRUD_ANNOTATION, method);
-    if(permission == null && strictMode){
-      permission = getPermission(STRICT_ANNOTATION, method);
-    }
     if(permission == null){//自定义PermissionType
       PermissionType permissionType = method.getDeclaredAnnotation(PermissionType.class);
-      return permissionType != null ? permissionType.type() : null;
+      permission = permissionType == null ? null : permissionType.type();
+    }
+    if(permission == null && strictMode){
+      permission = getPermission(STRICT_ANNOTATION, method);
     }
     return permission;
   }
