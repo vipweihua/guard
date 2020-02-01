@@ -24,6 +24,18 @@
     "limitation": "area = 'hangzhou'"
   },
   {
+    "name": "deliver-order-shanghai",
+    "resource":"order",
+    "type": "Deliver",
+    "limitation": "area = 'shanghai'"
+  },
+  {
+    "name": "deliver-order-hangzhou",
+    "resource":"order",
+    "type": "Deliver",
+    "limitation": "area = 'hangzhou'"
+  },
+  {
     "name": "r-insurance-shanghai",
     "resource":"insurance",
     "type": "Retrieve",
