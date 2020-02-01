@@ -1,0 +1,18 @@
+[
+  {
+    "name": "shanghai-admin",
+    "permissions": ["r-order-shanghai", "r-insurance-shanghai", "c-order-shanghai", "c-insurance-shanghai"]
+  },
+  {
+    "name": "hangzhou-admin",
+    "permissions": ["r-order-hangzhou", "r-insurance-hangzhou", "c-order-hangzhou", "c-insurance-hangzhou"]
+  },
+  {
+    "name": "order-admin",
+    "permissions": ["r-order-shanghai", "r-order-hangzhou", "c-order-shanghai", "c-order-hangzhou"]
+  },
+  {
+    "name": "insurance-admin",
+    "permissions": ["r-insurance-shanghai", "r-insurance-hangzhou", "c-insurance-shanghai", "c-insurance-hangzhou"]
+  }
+]
