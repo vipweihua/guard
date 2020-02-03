@@ -1,6 +1,6 @@
 package com.uhasoft.guard.demo.controller;
 
-import com.uhasoft.guard.annotation.Resource;
+import com.uhasoft.guard.annotation.GuardResource;
 import com.uhasoft.guard.context.UserThreadLocal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping
-@Resource("order")
+@GuardResource("order")
 public class Controller {
 
 //  @Retrieve
@@ -22,7 +22,7 @@ public class Controller {
     return UserThreadLocal.getLimitation().toString();
   }
 
-  @Resource("insurance")
+  @GuardResource("insurance")
 //  @Create
   @GetMapping("insurance")
   public String getInsuranceLimitation(){

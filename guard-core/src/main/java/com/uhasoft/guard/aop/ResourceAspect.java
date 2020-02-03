@@ -87,9 +87,9 @@ public class ResourceAspect {
   }
 
   private String resolveResource(Method method, Class<?> targetClass){
-    Resource resource = method.getDeclaredAnnotation(Resource.class);
+    GuardResource resource = method.getDeclaredAnnotation(GuardResource.class);
     if(resource == null){
-      resource = targetClass.getDeclaredAnnotation(Resource.class);
+      resource = targetClass.getDeclaredAnnotation(GuardResource.class);
     }
     return resource != null ? resource.value() : null;
   }

@@ -1,7 +1,7 @@
 package com.uhasoft.guard.demo.controller;
 
 import com.uhasoft.guard.annotation.PermissionType;
-import com.uhasoft.guard.annotation.Resource;
+import com.uhasoft.guard.annotation.GuardResource;
 import com.uhasoft.guard.annotation.Retrieve;
 import com.uhasoft.guard.context.UserThreadLocal;
 import com.uhasoft.guard.demo.entity.Order;
@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Weihua
  * @since 1.0.0
  */
-@Resource("order")
+@GuardResource("order")
 @RequestMapping("order")
 @RestController
 public class OrderController extends BaseController<Order> {
