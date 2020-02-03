@@ -7,10 +7,10 @@
  
  ## 原理介绍
  
- ### @Resource注解
- Resource注解定义资源，它的含义与Restful提倡的资源同义，一般置于Controller类上，以表示该类中定义的接口都需要在该资源上拥有权限，如下代码：
+ ### @GuardResource注解
+ GuardResource注解定义资源，它的含义与Restful提倡的资源同义，一般置于Controller类上，以表示该类中定义的接口都需要在该资源上拥有权限，如下代码：
  ```
- @Resource("order")
+ @GuardResource("order")
  @RestController
  @RequestMapping("order")
  public class OrderController{
