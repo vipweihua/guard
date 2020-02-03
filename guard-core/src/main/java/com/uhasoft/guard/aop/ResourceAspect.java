@@ -110,7 +110,7 @@ public class ResourceAspect {
     String permission = getPermission(CRUD_ANNOTATION, method);
     if(permission == null){//自定义PermissionType
       PermissionType permissionType = method.getDeclaredAnnotation(PermissionType.class);
-      permission = permissionType == null ? null : permissionType.type();
+      permission = permissionType == null ? null : permissionType.value();
     }
     if(permission == null && strictMode){
       permission = getPermission(STRICT_ANNOTATION, method);

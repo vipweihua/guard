@@ -36,7 +36,7 @@ public class OrderController extends BaseController<Order> {
    * @param id 订单ID
    * @return 订单
    */
-  @PermissionType(type = "deliver")
+  @PermissionType("deliver")
   @PutMapping("id/{id}")
   public Response<List<String>> deliver(@PathVariable String id){
     return Response.success(UserThreadLocal.getLimitation());

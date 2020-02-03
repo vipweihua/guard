@@ -11,5 +11,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface PermissionType {
 
-  String type();
+  String value();
 }
