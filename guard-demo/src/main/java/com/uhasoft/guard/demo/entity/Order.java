@@ -1,7 +1,6 @@
 package com.uhasoft.guard.demo.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * @author Weihua

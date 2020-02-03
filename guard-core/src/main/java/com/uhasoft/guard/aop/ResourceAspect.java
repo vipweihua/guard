@@ -1,6 +1,11 @@
 package com.uhasoft.guard.aop;
 
-import com.uhasoft.guard.annotation.*;
+import com.uhasoft.guard.annotation.Create;
+import com.uhasoft.guard.annotation.Delete;
+import com.uhasoft.guard.annotation.GuardResource;
+import com.uhasoft.guard.annotation.PermissionType;
+import com.uhasoft.guard.annotation.Retrieve;
+import com.uhasoft.guard.annotation.Update;
 import com.uhasoft.guard.constant.GuardConstant;
 import com.uhasoft.guard.context.UserThreadLocal;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -71,7 +76,7 @@ public class ResourceAspect {
       "|| @annotation(org.springframework.web.bind.annotation.PutMapping)" +
       "|| @annotation(org.springframework.web.bind.annotation.DeleteMapping)")
   public void resourcePointcut(){
-
+    logger.info("Nothing needed here.");
   }
 
   @Around("resourcePointcut()")
@@ -101,6 +106,7 @@ public class ResourceAspect {
     Method method = getDeclaredMethodFor(targetClass, signature.getName(),
         signature.getMethod().getParameterTypes());
     if (method == null) {
+      logger.error("Cannot resolve target method: {}", signature.getMethod().getName());
       throw new IllegalStateException("Cannot resolve target method: " + signature.getMethod().getName());
     }
     return method;
