@@ -53,19 +53,19 @@
  ## Demo使用说明
  直接运行位于guard-demo模块下的Application主函数即可，无需任何配置，测试时
  访问地址：
--GET [http://localhost:8080/order/id/123](http://localhost:8080/order/id/123) 测试无注解权限控制
+- GET [http://localhost:8080/order/id/123](http://localhost:8080/order/id/123) 测试无注解权限控制
 
--PUT [http://localhost:8080/order/id/123](http://localhost:8080/order/id/123) 测试自定义注解权限控制
+- PUT [http://localhost:8080/order/id/123](http://localhost:8080/order/id/123) 测试自定义注解权限控制
  header中请添加key=user，value可取值：zhangsan/lisi/wangsu/zhaoliu/weihua,分别对应的权限见resource文件夹中的几个json设置，也可更改后查看变化
  
  更多的测试大家可以自行研究下几个json，也可以写更多的Controller来测试。
  
  ## RoadMap
  
--用户体验：对于一个及其规范的项目，所有的Controller可能都会有明确的继承关系和范型设定，如OrderController -> BaseController，
+- 用户体验：对于一个及其规范的项目，所有的Controller可能都会有明确的继承关系和范型设定，如OrderController -> BaseController，
  在OrderController类头定义部分我们发现，不仅@Resource指定，同时@RequestMapping和范型也指定了Order，这些都是重复信息，
  如果能够在使用Guard的情况下默认使用一个，同时亦可覆盖则会更佳。
  
--扩展性：这应该是将来的大头，当前只实现了以json方式的数据源，将来会有更多的数据源，如配置中心、或者hibernate/Mybatis等ORM，通过拦截器方式直接无缝过滤数据，也欢迎各位大侠路过指点。
+- 扩展性：这应该是将来的大头，当前只实现了以json方式的数据源，将来会有更多的数据源，如配置中心、或者hibernate/Mybatis等ORM，通过拦截器方式直接无缝过滤数据，也欢迎各位大侠路过指点。
 
--代码纯洁性：模块的划分是否合理，当前guard-core直接依赖了spring-boot-starter-web，有点过重，完美的情况下希望足够轻量，其余都只是扩展。
+- 代码纯洁性：模块的划分是否合理，当前guard-core直接依赖了spring-boot-starter-web，有点过重，完美的情况下希望足够轻量，其余都只是扩展。
