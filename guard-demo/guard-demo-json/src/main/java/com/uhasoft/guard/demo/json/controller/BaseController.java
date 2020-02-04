@@ -1,4 +1,4 @@
-package com.uhasoft.guard.demo.controller;
+package com.uhasoft.guard.demo.json.controller;
 
 /**
  * @author Weihua

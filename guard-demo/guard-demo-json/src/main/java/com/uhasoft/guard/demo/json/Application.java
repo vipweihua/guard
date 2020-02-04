@@ -1,4 +1,4 @@
-package com.uhasoft.guard.demo;
+package com.uhasoft.guard.demo.json;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

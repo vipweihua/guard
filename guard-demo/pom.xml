@@ -10,21 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>guard-demo</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.uhasoft</groupId>
-            <artifactId>guard-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.uhasoft</groupId>
-            <artifactId>guard-ds-json</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    </dependencies>
+    <packaging>pom</packaging>
+    <modules>
+        <module>guard-demo-json</module>
+        <module>guard-demo-mybatis</module>
+    </modules>
 
 
 </project>

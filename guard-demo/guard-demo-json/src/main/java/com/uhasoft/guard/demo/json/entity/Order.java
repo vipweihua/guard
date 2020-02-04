@@ -1,4 +1,4 @@
-package com.uhasoft.guard.demo.entity;
+package com.uhasoft.guard.demo.json.entity;
 
 import java.math.BigDecimal;
 
