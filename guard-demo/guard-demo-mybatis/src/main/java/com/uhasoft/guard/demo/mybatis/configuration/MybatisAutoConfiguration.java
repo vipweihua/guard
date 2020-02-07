@@ -22,8 +22,8 @@ public class MybatisAutoConfiguration {
   public ConfigurationCustomizer mybatisConfigurationCustomizer() {
     return configuration -> {
       configuration.addMapper(OrderMapper.class);
-      configuration.addInterceptor(new PageHelper());
       configuration.addInterceptor(new GuardMybatisPlugin());
+//      configuration.addInterceptor(new PageHelper());
     };
   }
 
@@ -32,7 +32,7 @@ public class MybatisAutoConfiguration {
     SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
     dataSource.setDriverClass(Driver.class);
     dataSource.setUsername("root");
-    dataSource.setPassword("root");
+    dataSource.setPassword("letmein");
     dataSource.setUrl("jdbc:mysql://localhost:3306/guard-demo?autoReconnect=true&useUnicode=true&characterEncoding=utf-8");
     return dataSource;
   }

@@ -18,7 +18,7 @@ public interface OrderMapper {
   Order findById(@Param("id") String id);
 
   @Select("select * from t_order")
-  Page<Order> findAll();
+  Page<Order> findAll(@Param("pageNum") int pageNum, @Param("PageSize") int PageSize);
 
   @Insert("insert into t_order(id, createdBy, createdAt, lastModifiedBy, lastModifiedAt, version, deleted, area) " +
       "values(#{o.id}, #{o.createdBy}, #{o.createdAt}, #{o.lastModifiedBy}, #{o.lastModifiedAt}, #{o.version}, #{o.deleted}, #{o.area})")

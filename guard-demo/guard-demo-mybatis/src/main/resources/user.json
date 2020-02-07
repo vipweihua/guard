@@ -1,0 +1,22 @@
+[
+  {
+    "name": "zhangsan",
+    "roles": ["shanghai-admin"]
+  },
+  {
+    "name": "lisi",
+    "roles": ["hangzhou-admin"]
+  },
+  {
+    "name": "wangwu",
+    "roles": ["order-admin"]
+  },
+  {
+    "name": "zhaoliu",
+    "roles": ["insurance-admin"]
+  },
+  {
+    "name": "weihua",
+    "roles": ["order-admin", "insurance-admin", "shanghai-admin", "hangzhou-admin"]
+  }
+]
