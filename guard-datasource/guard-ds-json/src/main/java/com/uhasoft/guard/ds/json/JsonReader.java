@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.uhasoft.guard.context.UserCache;
 import com.uhasoft.guard.ds.json.constant.JsonConstant;
-import com.uhasoft.guard.ds.json.entity.RolePermission;
+import com.uhasoft.guard.ds.json.entity.RoleRight;
 import com.uhasoft.guard.ds.json.entity.UserRole;
-import com.uhasoft.guard.entity.Permission;
+import com.uhasoft.guard.entity.Right;
 import com.uhasoft.guard.entity.Role;
 import com.uhasoft.guard.entity.User;
 import org.slf4j.Logger;
@@ -33,18 +33,18 @@ public class JsonReader {
     String userJson = readFile(JsonConstant.USER_JSON);
     List<UserRole> userRoles = gson.fromJson(userJson, new TypeToken<List<UserRole>>() {}.getType());
     String roleJson = readFile(JsonConstant.ROLE_JSON);
-    List<RolePermission> rolePermissions = gson.fromJson(roleJson, new TypeToken<List<RolePermission>>() {}.getType());
-    String permissionJson = readFile(JsonConstant.PERMISSION_JSON);
-    List<Permission> permissions = gson.fromJson(permissionJson, new TypeToken<List<Permission>>() {}.getType());
-    Map<String, Permission> permissionMap = new HashMap<>();
-    permissions.forEach(p -> permissionMap.put(p.getName(), p));
+    List<RoleRight> roleRights = gson.fromJson(roleJson, new TypeToken<List<RoleRight>>() {}.getType());
+    String rightJson = readFile(JsonConstant.RIGHT_JSON);
+    List<Right> rights = gson.fromJson(rightJson, new TypeToken<List<Right>>() {}.getType());
+    Map<String, Right> rightMap = new HashMap<>();
+    rights.forEach(p -> rightMap.put(p.getName(), p));
     Map<String, Role> roleMap = new HashMap<>();
-    rolePermissions.forEach(rp -> {
+    roleRights.forEach(rp -> {
       Role role = new Role();
       role.setName(rp.getName());
-      List<Permission> permissionList = new ArrayList<>(rp.getPermissions().size());
-      rp.getPermissions().forEach(p -> permissionList.add(permissionMap.get(p)));
-      role.setPermissions(permissionList);
+      List<Right> rightList = new ArrayList<>(rp.getRights().size());
+      rp.getRights().forEach(p -> rightList.add(rightMap.get(p)));
+      role.setRights(rightList);
       roleMap.put(role.getName(), role);
     });
     userRoles.forEach(u -> {
@@ -69,7 +69,8 @@ public class JsonReader {
     long length = file.length();
     byte[] content = new byte[(int) length];
     try(FileInputStream inputStream = new FileInputStream(file)) {
-      inputStream.read(content);
+      int read = inputStream.read(content);
+      logger.info("read result: {}", read);
       return new String(content, StandardCharsets.UTF_8);
     } catch (Exception ex){
       logger.error(ex.getMessage(), ex);

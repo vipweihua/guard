@@ -30,17 +30,17 @@ public class User {
     this.roles = roles;
   }
 
-  public Set<Permission> getPermissions() {
-    Set<List<Permission>> permissions = roles.stream().map(Role::getPermissions).collect(Collectors.toSet());
-    Set<Permission> allButNonDuplicated = new HashSet<>();
-    permissions.forEach(allButNonDuplicated::addAll);
+  public Set<Right> getRights() {
+    Set<List<Right>> rights = roles.stream().map(Role::getRights).collect(Collectors.toSet());
+    Set<Right> allButNonDuplicated = new HashSet<>();
+    rights.forEach(allButNonDuplicated::addAll);
     return allButNonDuplicated;
   }
 
   public List<Limitation> getLimitation(String type, String resource) {
-    return getPermissions().stream()
+    return getRights().stream()
         .filter(p -> p.getType().equalsIgnoreCase(type) && p.getResource().equalsIgnoreCase(resource))
-        .map(Permission::getLimitation)
+        .map(Right::getLimitation)
         .collect(Collectors.toList());
   }
 

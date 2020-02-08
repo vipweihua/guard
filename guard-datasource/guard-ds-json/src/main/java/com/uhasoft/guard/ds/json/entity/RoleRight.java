@@ -6,10 +6,10 @@ import java.util.List;
  * @author Weihua
  * @since 1.0.0
  */
-public class RolePermission {
+public class RoleRight {
 
   private String name;
-  private List<String> permissions;
+  private List<String> rights;
 
   public String getName() {
     return name;
@@ -19,11 +19,11 @@ public class RolePermission {
     this.name = name;
   }
 
-  public List<String> getPermissions() {
-    return permissions;
+  public List<String> getRights() {
+    return rights;
   }
 
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
+  public void setRights(List<String> rights) {
+    this.rights = rights;
   }
 }

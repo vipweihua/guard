@@ -24,20 +24,20 @@ public class AccessFilter extends OncePerRequestFilter {
     User user = UserCache.getUser(userName);
     //TODO get user from cache
     UserThreadLocal.setCurrentUser(user);
-//    List<Permission> permissions = new ArrayList<>();
-//    Permission permission = new Permission();
-//    permission.setLimitation("area = 'shanghai'");
-//    permission.setResource("order");
-//    permission.setType("retrieve");
-//    permissions.add(permission);
+//    List<Right> rights = new ArrayList<>();
+//    Right right = new Right();
+//    right.setLimitation("area = 'shanghai'");
+//    right.setResource("order");
+//    right.setType("right");
+//    rights.add(right);
 //
-//    Permission another = new Permission();
+//    Right another = new Right();
 //    another.setLimitation("area = 'hangzhou'");
 //    another.setResource("insurance");
 //    another.setType("retrieve");
-//    permissions.add(another);
+//    rights.add(another);
 //
-//    UserContext.setPermissions(permissions);
+//    UserContext.setRights(rights);
     filterChain.doFilter(request, response);
   }
 }

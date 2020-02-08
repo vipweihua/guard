@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
-@PermissionType("Delete")
+@RightType("Delete")
 public @interface Delete {
 }

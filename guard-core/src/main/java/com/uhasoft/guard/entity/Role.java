@@ -9,7 +9,7 @@ import java.util.List;
 public class Role {
 
   private String name;
-  private List<Permission> permissions;
+  private List<Right> rights;
 
   public String getName() {
     return name;
@@ -19,11 +19,11 @@ public class Role {
     this.name = name;
   }
 
-  public List<Permission> getPermissions() {
-    return permissions;
+  public List<Right> getRights() {
+    return rights;
   }
 
-  public void setPermissions(List<Permission> permissions) {
-    this.permissions = permissions;
+  public void setRights(List<Right> rights) {
+    this.rights = rights;
   }
 }

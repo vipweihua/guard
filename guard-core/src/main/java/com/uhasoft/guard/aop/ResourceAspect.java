@@ -3,7 +3,7 @@ package com.uhasoft.guard.aop;
 import com.uhasoft.guard.annotation.Create;
 import com.uhasoft.guard.annotation.Delete;
 import com.uhasoft.guard.annotation.GuardResource;
-import com.uhasoft.guard.annotation.PermissionType;
+import com.uhasoft.guard.annotation.RightType;
 import com.uhasoft.guard.annotation.Retrieve;
 import com.uhasoft.guard.annotation.Update;
 import com.uhasoft.guard.constant.GuardConstant;
@@ -34,19 +34,19 @@ import java.util.Map;
 @Aspect
 public class ResourceAspect {
 
-  private static final Map<Class<? extends Annotation>, String> PERMISSION_TYPE_MAP = new HashMap<>();
+  private static final Map<Class<? extends Annotation>, String> RIGHT_TYPE_MAP = new HashMap<>();
   private static final List<Class<? extends Annotation>> CRUD_ANNOTATION = new ArrayList<>();
   private static final List<Class<? extends Annotation>> STRICT_ANNOTATION = new ArrayList<>();
 
   static {
-    PERMISSION_TYPE_MAP.put(Create.class, GuardConstant.PERMISSION_CREATE);
-    PERMISSION_TYPE_MAP.put(Retrieve.class, GuardConstant.PERMISSION_RETRIEVE);
-    PERMISSION_TYPE_MAP.put(Update.class, GuardConstant.PERMISSION_UPDATE);
-    PERMISSION_TYPE_MAP.put(Delete.class, GuardConstant.PERMISSION_DELETE);
-    PERMISSION_TYPE_MAP.put(PostMapping.class, GuardConstant.PERMISSION_CREATE);
-    PERMISSION_TYPE_MAP.put(GetMapping.class, GuardConstant.PERMISSION_RETRIEVE);
-    PERMISSION_TYPE_MAP.put(PutMapping.class, GuardConstant.PERMISSION_UPDATE);
-    PERMISSION_TYPE_MAP.put(DeleteMapping.class, GuardConstant.PERMISSION_DELETE);
+    RIGHT_TYPE_MAP.put(Create.class, GuardConstant.RIGHT_CREATE);
+    RIGHT_TYPE_MAP.put(Retrieve.class, GuardConstant.RIGHT_RETRIEVE);
+    RIGHT_TYPE_MAP.put(Update.class, GuardConstant.RIGHT_UPDATE);
+    RIGHT_TYPE_MAP.put(Delete.class, GuardConstant.RIGHT_DELETE);
+    RIGHT_TYPE_MAP.put(PostMapping.class, GuardConstant.RIGHT_CREATE);
+    RIGHT_TYPE_MAP.put(GetMapping.class, GuardConstant.RIGHT_RETRIEVE);
+    RIGHT_TYPE_MAP.put(PutMapping.class, GuardConstant.RIGHT_UPDATE);
+    RIGHT_TYPE_MAP.put(DeleteMapping.class, GuardConstant.RIGHT_DELETE);
 
     CRUD_ANNOTATION.add(Create.class);
     CRUD_ANNOTATION.add(Retrieve.class);
@@ -84,8 +84,8 @@ public class ResourceAspect {
     Class<?> targetClass = joinPoint.getTarget().getClass();
     Method method = resolveMethod(joinPoint);
     String resource = resolveResource(method, targetClass);
-    String type = resolvePermission(method);
-    UserThreadLocal.setPermissionType(type);
+    String type = resolveRight(method);
+    UserThreadLocal.setRightType(type);
     UserThreadLocal.setResource(resource);
 
     return joinPoint.proceed();
@@ -112,23 +112,23 @@ public class ResourceAspect {
     return method;
   }
 
-  private String resolvePermission(Method method){
-    String permission = getPermission(CRUD_ANNOTATION, method);
-    if(permission == null){//自定义PermissionType
-      PermissionType permissionType = method.getDeclaredAnnotation(PermissionType.class);
-      permission = permissionType == null ? null : permissionType.value();
+  private String resolveRight(Method method){
+    String right = getRight(CRUD_ANNOTATION, method);
+    if(right == null){//自定义RightType
+      RightType rightType = method.getDeclaredAnnotation(RightType.class);
+      right = rightType == null ? null : rightType.value();
     }
-    if(permission == null && strictMode){
-      permission = getPermission(STRICT_ANNOTATION, method);
+    if(right == null && strictMode){
+      right = getRight(STRICT_ANNOTATION, method);
     }
-    return permission;
+    return right;
   }
 
-  private String getPermission(List<Class<? extends Annotation>> annotationClasses, Method method){
+  private String getRight(List<Class<? extends Annotation>> annotationClasses, Method method){
     for(Class<? extends Annotation> clazz : annotationClasses){
       Annotation annotation = method.getDeclaredAnnotation(clazz);
       if(annotation != null){
-        return PERMISSION_TYPE_MAP.get(clazz);
+        return RIGHT_TYPE_MAP.get(clazz);
       }
     }
     return null;

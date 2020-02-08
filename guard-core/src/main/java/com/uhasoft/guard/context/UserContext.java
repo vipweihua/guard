@@ -13,10 +13,10 @@ public class UserContext {
 
   private User user;
   private String resource;
-  private String permissionType;
+  private String rightType;
 
   public List<Limitation> getLimitation(){
-    return user.getLimitation(permissionType, resource);
+    return user.getLimitation(rightType, resource);
   }
 
   public User getUser() {
@@ -35,11 +35,11 @@ public class UserContext {
     this.resource = resource;
   }
 
-  public String getPermissionType() {
-    return permissionType;
+  public String getRightType() {
+    return rightType;
   }
 
-  public void setPermissionType(String permissionType) {
-    this.permissionType = permissionType;
+  public void setRightType(String rightType) {
+    this.rightType = rightType;
   }
 }

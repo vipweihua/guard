@@ -8,6 +8,6 @@ public interface JsonConstant {
 
   String USER_JSON = "user.json";
   String ROLE_JSON = "role.json";
-  String PERMISSION_JSON = "permission.json";
+  String RIGHT_JSON = "right.json";
 }
 

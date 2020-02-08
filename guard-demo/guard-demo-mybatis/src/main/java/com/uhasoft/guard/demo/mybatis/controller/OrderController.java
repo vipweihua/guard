@@ -2,7 +2,7 @@ package com.uhasoft.guard.demo.mybatis.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.uhasoft.guard.annotation.GuardResource;
-import com.uhasoft.guard.annotation.PermissionType;
+import com.uhasoft.guard.annotation.RightType;
 import com.uhasoft.guard.annotation.Retrieve;
 import com.uhasoft.guard.context.UserThreadLocal;
 import com.uhasoft.guard.demo.mybatis.entity.Order;
@@ -66,11 +66,11 @@ public class OrderController extends BaseController<Order> {
   }
 
   /**
-   * 自定义PermissionType
+   * 自定义RightType
    * @param id 订单ID
    * @return 订单
    */
-  @PermissionType("deliver")
+  @RightType("deliver")
   @PutMapping("id/{id}")
   public Response<List<Limitation>> deliver(@PathVariable String id){
     return Response.success(UserThreadLocal.getLimitation());

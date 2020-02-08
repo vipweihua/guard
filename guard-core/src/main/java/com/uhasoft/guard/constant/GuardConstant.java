@@ -7,8 +7,8 @@ package com.uhasoft.guard.constant;
 public interface GuardConstant {
 
   String GUARD_STRICT_MODE = "guard.strict.mode";
-  String PERMISSION_CREATE = "Create";
-  String PERMISSION_RETRIEVE = "Retrieve";
-  String PERMISSION_UPDATE = "Update";
-  String PERMISSION_DELETE = "Delete";
+  String RIGHT_CREATE = "Create";
+  String RIGHT_RETRIEVE = "Retrieve";
+  String RIGHT_UPDATE = "Update";
+  String RIGHT_DELETE = "Delete";
 }

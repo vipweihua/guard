@@ -4,7 +4,7 @@
 
  ## 目的
  Guard可以通过注解实现用户对接口数据的过滤及访问控制。
- 开发阶段，只需要定义资源（Resource）及访问接口需要的权限（Permission）；
+ 开发阶段，只需要定义资源（Resource）及访问接口需要的权限（Right）；
  用户、角色、权限三者的关系可以根据配置控制，这种配置是事后的，可以json、配置中心、管理平台完成。
  
  ## 原理介绍
@@ -20,7 +20,7 @@
  }
  ```
  
- ### @PermissionType, @Create, @Retrieve, @Update, @Delete, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+ ### @RightType, @Create, @Retrieve, @Update, @Delete, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
  严格模式下（通过guard.strict.mode=true设定），自动识别SpringMVC定义的@GetMapping, @PostMapping, @PutMapping, @DeleteMapping，
  即，不需要任何额外注解，使用@GetMapping注解即表示该接口为获取数据接口，所需权限类型就是Retrieve，只要用户拥有当前资源下的Retrieve权限即可访问，
  @PostMapping, @PutMapping, @DeleteMapping三个注解以此类推。如：
@@ -41,9 +41,9 @@
  }
  ```
  
- 同时也支持自定义权限类型，可以@PermissionType指定，如下自定义deliver权限，同时在权限列表中分配相关角色即可：
+ 同时也支持自定义权限类型，可以@RightType指定，如下自定义deliver权限，同时在权限列表中分配相关角色即可：
  ```java
- @PermissionType(type = "deliver")
+ @RightType(type = "deliver")
  @PutMapping("id/{id}")
  public Response<List<String>> deliver(@PathVariable String id){
    return Response.success(UserThreadLocal.getLimitation());

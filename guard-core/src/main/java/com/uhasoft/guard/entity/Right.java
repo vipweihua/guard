@@ -4,7 +4,7 @@ package com.uhasoft.guard.entity;
  * @author Weihua
  * @since 1.0.0
  */
-public class Permission {
+public class Right {
 
   private String name;
   private String resource;

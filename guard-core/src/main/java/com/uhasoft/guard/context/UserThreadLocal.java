@@ -21,8 +21,8 @@ public class UserThreadLocal {
     currentUser.get().setResource(resource);
   }
 
-  public static void setPermissionType(String type){
-    currentUser.get().setPermissionType(type);
+  public static void setRightType(String type){
+    currentUser.get().setRightType(type);
   }
 
   public static List<Limitation> getLimitation(){
