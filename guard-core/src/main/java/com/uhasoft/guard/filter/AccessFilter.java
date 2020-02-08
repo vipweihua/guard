@@ -22,22 +22,7 @@ public class AccessFilter extends OncePerRequestFilter {
       throws ServletException, IOException {
     String userName = request.getHeader("user");
     User user = UserCache.getUser(userName);
-    //TODO get user from cache
     UserThreadLocal.setCurrentUser(user);
-//    List<Right> rights = new ArrayList<>();
-//    Right right = new Right();
-//    right.setLimitation("area = 'shanghai'");
-//    right.setResource("order");
-//    right.setType("right");
-//    rights.add(right);
-//
-//    Right another = new Right();
-//    another.setLimitation("area = 'hangzhou'");
-//    another.setResource("insurance");
-//    another.setType("retrieve");
-//    rights.add(another);
-//
-//    UserContext.setRights(rights);
     filterChain.doFilter(request, response);
   }
 }
