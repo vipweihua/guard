@@ -32,14 +32,11 @@ import java.util.List;
 public class GuardSqlSource implements SqlSource {
 
   private static final Logger logger = LoggerFactory.getLogger(GuardSqlSource.class);
-  private SqlSource sqlSource;
   private String sql;
   private List<ParameterMapping> parameterMappings;
   private Configuration configuration;
-  private SqlSource original;
 
   public GuardSqlSource(RawSqlSource rawSqlSource) {
-    this.original = rawSqlSource;
     MetaObject metaObject = SystemMetaObject.forObject(rawSqlSource);
     StaticSqlSource staticSqlSource = (StaticSqlSource) metaObject.getValue("sqlSource");
     metaObject = SystemMetaObject.forObject(staticSqlSource);
@@ -47,7 +44,6 @@ public class GuardSqlSource implements SqlSource {
     this.sql = (String) metaObject.getValue("sql");
     this.parameterMappings = (List<ParameterMapping>) metaObject.getValue("parameterMappings");
     this.configuration = (Configuration) metaObject.getValue("configuration");
-    this.sqlSource = staticSqlSource;
   }
 
   @Override

@@ -1,10 +1,11 @@
 package com.uhasoft.guard.demo.json.controller;
 
 import com.uhasoft.guard.annotation.GuardResource;
-import com.uhasoft.guard.annotation.RightType;
 import com.uhasoft.guard.annotation.Retrieve;
+import com.uhasoft.guard.annotation.RightType;
 import com.uhasoft.guard.context.UserThreadLocal;
-import com.uhasoft.guard.demo.json.entity.*;
+import com.uhasoft.guard.demo.json.entity.Order;
+import com.uhasoft.guard.demo.json.entity.Response;
 import com.uhasoft.guard.entity.Limitation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
