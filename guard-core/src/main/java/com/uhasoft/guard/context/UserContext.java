@@ -1,5 +1,6 @@
 package com.uhasoft.guard.context;
 
+import com.uhasoft.guard.entity.Limitation;
 import com.uhasoft.guard.entity.User;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class UserContext {
   private String resource;
   private String permissionType;
 
-  public List<String> getLimitation(){
+  public List<Limitation> getLimitation(){
     return user.getLimitation(permissionType, resource);
   }
 

@@ -9,7 +9,7 @@ public class Permission {
   private String name;
   private String resource;
   private String type;
-  private String limitation;
+  private Limitation limitation;
 
   public String getName() {
     return name;
@@ -35,11 +35,11 @@ public class Permission {
     this.type = type;
   }
 
-  public String getLimitation() {
+  public Limitation getLimitation() {
     return limitation;
   }
 
-  public void setLimitation(String limitation) {
+  public void setLimitation(Limitation limitation) {
     this.limitation = limitation;
   }
 }

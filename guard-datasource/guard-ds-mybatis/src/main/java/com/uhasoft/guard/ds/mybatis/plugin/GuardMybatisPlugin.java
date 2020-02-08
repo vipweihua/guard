@@ -1,9 +1,8 @@
 package com.uhasoft.guard.ds.mybatis.plugin;
 
 import com.uhasoft.guard.context.UserThreadLocal;
+import com.uhasoft.guard.entity.Limitation;
 import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.executor.statement.StatementHandler;
-import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlSource;
 import org.apache.ibatis.plugin.Interceptor;
@@ -17,7 +16,6 @@ import org.apache.ibatis.scripting.defaults.RawSqlSource;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
-import java.lang.reflect.Proxy;
 import java.util.List;
 
 /**
@@ -29,7 +27,7 @@ public class GuardMybatisPlugin implements Interceptor {
 
   @Override
   public Object intercept(Invocation invocation) throws Throwable {
-    List<String> limitations = UserThreadLocal.getLimitation();
+    List<Limitation> limitations = UserThreadLocal.getLimitation();
     if(!limitations.isEmpty()){
       MappedStatement statement = (MappedStatement)invocation.getArgs()[0];
       SqlSource sqlSource = statement.getSqlSource();

@@ -14,6 +14,7 @@
         <mybatis.spring.version>2.0.3</mybatis.spring.version>
         <!--2020年2月3日，正当我创建此项目时，3.5.4新鲜出炉了-->
         <mybatis.version>3.5.4</mybatis.version>
+        <jsqlparser.version>2.0</jsqlparser.version>
         <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
     </properties>
 
@@ -36,6 +37,11 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>${jsqlparser.version}</version>
         </dependency>
     </dependencies>
 
