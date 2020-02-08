@@ -1,6 +1,5 @@
 package com.uhasoft.guard.demo.mybatis.configuration;
 
-import com.github.pagehelper.PageHelper;
 import com.mysql.jdbc.Driver;
 import com.uhasoft.guard.demo.mybatis.mapper.OrderMapper;
 import com.uhasoft.guard.ds.mybatis.plugin.GuardMybatisPlugin;
