@@ -17,7 +17,7 @@ public interface OrderMapper {
   @Select("select * from t_order o where o.id = #{id}")
   Order findById(@Param("id") String id);
 
-  @Select("select * from t_order")
+  @Select("select * from t_order where deleted = false or (deleted = true and version > 0)")
   Page<Order> findAll(@Param("pageNum") int pageNum, @Param("PageSize") int PageSize);
 
   @Insert("insert into t_order(id, createdBy, createdAt, lastModifiedBy, lastModifiedAt, version, deleted, area) " +

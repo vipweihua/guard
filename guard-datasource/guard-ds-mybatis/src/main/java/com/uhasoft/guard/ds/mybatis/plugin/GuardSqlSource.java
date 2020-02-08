@@ -73,7 +73,9 @@ public class GuardSqlSource implements SqlSource {
         if(where == null){
           plainSelect.setWhere(expression);
         } else {
-          plainSelect.setWhere(new AndExpression(where, expression));
+          String whereString = "(" + where.toString() + ")";
+          Expression newWhere = CCJSqlParserUtil.parseCondExpression(whereString);
+          plainSelect.setWhere(new AndExpression(newWhere, expression));
         }
         logger.info("SQL:{}", statement.toString());
         return new BoundSql(configuration, statement.toString(), parameterMappings, parameterObject);
