@@ -5,6 +5,7 @@ import com.uhasoft.guard.annotation.PermissionType;
 import com.uhasoft.guard.annotation.Retrieve;
 import com.uhasoft.guard.context.UserThreadLocal;
 import com.uhasoft.guard.demo.json.entity.*;
+import com.uhasoft.guard.entity.Limitation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,13 +27,13 @@ import java.util.Map;
 public class OrderController extends BaseController<Order> {
 
   @GetMapping("id/{id}")
-  public Response<List<String>> findById(@PathVariable String id){
+  public Response<List<Limitation>> findById(@PathVariable String id){
     return Response.success(UserThreadLocal.getLimitation());
   }
 
   @Retrieve
   @PostMapping("search")
-  public Response<List<String>> search(@RequestBody Map<String, String> searchBean){
+  public Response<List<Limitation>> search(@RequestBody Map<String, String> searchBean){
     return Response.success(UserThreadLocal.getLimitation());
   }
 
@@ -43,7 +44,7 @@ public class OrderController extends BaseController<Order> {
    */
   @PermissionType("deliver")
   @PutMapping("id/{id}")
-  public Response<List<String>> deliver(@PathVariable String id){
+  public Response<List<Limitation>> deliver(@PathVariable String id){
     return Response.success(UserThreadLocal.getLimitation());
   }
 }
